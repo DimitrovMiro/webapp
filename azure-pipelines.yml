@@ -23,7 +23,9 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: build
+        command: buildAndPush
+        repository: DimitrovMiro/webapp
+        containerRegistry: AzureContainerRegistry
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
