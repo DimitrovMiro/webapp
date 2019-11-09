@@ -12,7 +12,7 @@ RUN set -ex; \
 	; \
 	\
 	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
-	docker-php-ext-install gd mysqli opcache; \
+	docker-php-ext-install gd mysqli opcache zip; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
@@ -27,17 +27,6 @@ RUN set -ex; \
 	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*
-
-#install redis php extension
-ENV PHPREDIS_VERSION=4.0.2
-
-RUN docker-php-source extract \
-  && curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
-  && tar xfz /tmp/redis.tar.gz \
-  && rm -r /tmp/redis.tar.gz \
-  && mv phpredis-$PHPREDIS_VERSION /usr/src/php/ext/redis \
-  && docker-php-ext-install redis \
-  && docker-php-source delete
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
