@@ -28,4 +28,5 @@ stages:
         containerRegistry: Azure Container Registry
         dockerfile: '**/Dockerfile'
         tags: |
-          $(tag)
+        $(Build.BuildId)
+          latest
