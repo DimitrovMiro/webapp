@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: buildAndPush
-        repository: DimitrovMiro/webapp
+        repository: mirocr/dockerwpress
         containerRegistry: AzureContainerRegistry
         dockerfile: '**/Dockerfile'
         tags: |
