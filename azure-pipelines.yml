@@ -30,3 +30,4 @@ stages:
         tags: |
            $(tag)
            latest
+       - task: PublishBuildArtifacts@1
