@@ -33,13 +33,3 @@ stages:
     steps:
     - script: echo Deploy Website to Integration
       displayName: 'First step in deploying the website to integration'
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Subscription'
-    ConnectedServiceName: 'DXC Dev EA 1 (41de9402-bdbf-4272-83b5-c47919900bd6)'
-    subscriptionName: '41de9402-bdbf-4272-83b5-c47919900bd6'
-    location: 'West Europe'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/azuredeploy.json'
-    overrideParameters: 'RG=$resgr'
-    deploymentMode: 'Incremental'
